@@ -31,30 +31,36 @@ export class Pizzaservice {
     });
   }
 
-  getById(id: Number) {
-
-    return new Promise(resolve => {
-      this.http.get(this.url + id)
-        .subscribe((data: Pizza) => {
-          resolve(new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']))
-        });
-    });
-  }
-
-  delete(id: Number) {
-    return new Promise(resolve => {
-      this.http.delete(this.url + id).subscribe((data: Pizza) => {
-
+  getById(id: number) {
+    let findById: Pizza;
+    return new Promise<Pizza>(resolve => {
+      this.http.get(this.url + id).subscribe((data: any) => {
+        findById = new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']);
+        resolve(findById);
       });
     });
   }
 
-  add(data) {
-    return new Promise((resolve, reject) => {
-      this.http.post(this.url, JSON.stringify(data)).subscribe(res => {
-        resolve(new Pizza(data['id'], data['name'], data['desc'], data['picture'], data['price']));
-      }, (err) => {
-        reject(err);
+  add(pizza: Pizza) {
+    return new Promise<Pizza>(resolve => {
+      this.http.post(this.url, pizza).subscribe((data: any) => {
+        resolve();
+      });
+    });
+  }
+
+  delete(id: number) {
+    return new Promise<Pizza>(resolve => {
+      this.http.delete(this.url + id).subscribe((data: any) => {
+        resolve();
+      });
+    });
+  }
+
+  update(pizza: Pizza) {
+    return new Promise<Pizza>(resolve => {
+      this.http.patch(this.url + pizza.id, pizza).subscribe((data: any) => {
+        resolve();
       });
     });
   }
