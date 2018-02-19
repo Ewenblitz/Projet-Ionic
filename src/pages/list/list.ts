@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Pizzaservice } from '../../providers/pizzaservice/pizzaservice';
+import { Pizza } from '../../models/pizza';
 
 @Component({
   selector: 'page-list',
@@ -8,24 +10,37 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  items: Array<Pizza> = new Array<Pizza>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaservice: Pizzaservice) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
+    this.pizzaservice.get().then(items => {
+      console.log(items);
+      this.items = items;
+    });
 
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+    this.pizzaservice.getById(2).then(items =>{
+      console.log(items);
+    });
+
+    this.pizzaservice.delete(2).then(items => {
+      console.log(items);
+    });
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+  ionViewDidLoad() {
+    console.log('Ion View loaded');
   }
 
   itemTapped(event, item) {
