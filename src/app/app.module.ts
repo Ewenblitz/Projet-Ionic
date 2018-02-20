@@ -14,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pizzaservice } from '../providers/pizzaservice/pizzaservice';
 import { Vibration } from '@ionic-native/vibration';
+import { Camera } from '@ionic-native/camera';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -48,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Pizzaservice,
     Vibration,
+    Camera,
 
   ]
 })
