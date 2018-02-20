@@ -10,11 +10,8 @@ import { Pizza } from '../../models/pizza';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<Pizza> = new Array<Pizza>();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pizzaservice: Pizzaservice) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
 
     this.pizzaservice.get().then(items => {
       console.log(items);

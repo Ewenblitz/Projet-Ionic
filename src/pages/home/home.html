@@ -3,16 +3,21 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Carte</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-card *ngFor="let item of mypizza">
+    <ion-card-content>
+      {{ item.name }}
+      <img style= "width:50%; length:50%;"src='{{ item.picture }}'/> <hr />
+      {{ item.desc }} <br />
+      Prix : <strong>{{ item.price }}€</strong> <br />
+      <button ion-button color="dark" click="cart(item)">Add To Cart</button>
+      <button ion-button color="danger" click="delete(item)">Delete</button>
+      <button ion-button color="safe" click="update(item)">Modify</button>
+    </ion-card-content>
+  </ion-card>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
