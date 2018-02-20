@@ -5,7 +5,7 @@ import { Pizzaservice } from '../../providers/pizzaservice/pizzaservice';
 import { Pizza } from '../../models/pizza';
 import { HomePage } from '../home/home';
 
-import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the AddPage page.
@@ -27,6 +27,15 @@ export class AddPage {
 
   }
 
+  private options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    saveToPhotoAlbum: true,
+    correctOrientation: true,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
   addPizza = [];
 
   add() {
@@ -46,9 +55,9 @@ export class AddPage {
   }
 
   addPicture() {
-    this.camera.getPicture().then((imagedata) => {
+    this.camera.getPicture(this.options).then((imagedata) => {
       this.base64Image = imagedata;
-      this.pizza.picture = 'data:image/png;base64,' + this.base64Image;
+      this.pizza.picture = 'data:image/jpeg;base64,' + this.base64Image;
       console.log(this.pizza);
     });
   }

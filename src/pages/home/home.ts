@@ -9,7 +9,6 @@ import { Vibration } from '@ionic-native/vibration';
 import { CartPage } from '../cart/cart';
 import { AddPage } from '../add/add';
 import { ModifcationPage } from '../modifcation/modifcation';
-import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-home',
@@ -31,7 +30,7 @@ export class HomePage {
     });
   }
 
-  changingPage(thispizza) {
+  update(thispizza) {
     this.navCtrl.push(ModifcationPage, {
       var1: thispizza
     });
