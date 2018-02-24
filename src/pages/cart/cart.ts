@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Pizza } from '../../models/pizza';
+
+import { NativeStorage } from '@ionic-native/native-storage';
+
 /**
  * Generated class for the CartPage page.
  *
@@ -15,22 +19,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CartPage {
 
-  cartsection: any;
+  cartsection: Array<Pizza> = new Array<Pizza>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.cartsection = this.navParams.data.var1;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private nativeStorage: NativeStorage) {
+    this.nativeStorage.getItem('myCart').then((cartsection: Array<Pizza>) => {
+      this.cartsection = cartsection;
+    }, ((error) => {
+      console.log('Error storing pizza', error);
+    })
+  );
+  console.log(this.navParams.data.var1);
   }
 
-  deleteCart(thispizza) {
-    let i = 0;
-    for (let temp of this.cartsection) {
-      i++
-      if (thispizza.id == temp.id) {
-        i--;
-        this.cartsection.splice(i, 1);
-        console.log(this.cartsection);
-      }
-    }
+  deleteCart(i: number) {
+    this.cartsection.splice(i, 1);
+    this.nativeStorage.setItem('monPanier', this.cartsection).then(
+      () => console.log('Item Stored'),
+      error => console.error('Error storing item', error)
+    );
+    console.log(this.cartsection);
   }
 
   ionViewDidLoad() {
