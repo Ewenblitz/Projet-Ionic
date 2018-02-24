@@ -20,7 +20,7 @@ ionic cordova run android
 ou bien pour une version web (/!\ certaines fonctionnalités ne seront pas disponibles)
 
 ```bash
-ionic Pizzaservice
+ionic serve
 ```
 
 ### Le panier n'est pas encore fonctionnel
