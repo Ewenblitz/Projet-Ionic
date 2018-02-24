@@ -4,7 +4,6 @@ import { Pizzaservice } from '../../providers/pizzaservice/pizzaservice';
 import { Pizza } from '../../models/pizza';
 
 import { ToastController } from 'ionic-angular';
-import { Vibration } from '@ionic-native/vibration';
 
 import { CartPage } from '../cart/cart';
 import { AddPage } from '../add/add';
@@ -18,7 +17,7 @@ export class HomePage {
   cartsection = new Array<Pizza>();
   mypizza: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pizza: Pizzaservice, private toastCrtl: ToastController, private vibration: Vibration) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pizza: Pizzaservice, private toastCrtl: ToastController) {
     this.getHome();
     this.pizza.getById(3).then((item: any) => {
     });
