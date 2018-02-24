@@ -9,16 +9,20 @@
 
 
 <ion-content padding>
-  <h2 *ngIf = "!cartsection.length">Your cart is empty</h2>
-  <ion-card *ngFor = "let cartview of cartsection; let i = index;">
-    <span> {{ cartview.price }} €</span>
+  <h2 *ngIf = "cartsection?.length <= 0">
+    Your cart is empty
+  </h2>
+  <ion-card *ngFor = "let cartview of cartsection">
+    <span>{{ cartview.price }}€</span>
     <img src = "{{ cartview.picture }}" />
     <ion-card-content>
-      <ion-card-title>{{ cartview.name }}</ion-card-title>
+      <ion-card-title>
+        {{ cartview.name }}
+      </ion-card-title>
       <p>
         {{ cartview.desc }}
       </p>
-      <button ion-button color = "dark" (click) = "deleteCart(i)">Delete from cart</button>
+      <button ion-button color = "safe" (click) = "deleteCart(cartview)">Delete cart</button>
     </ion-card-content>
   </ion-card>
 

@@ -13,7 +13,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Pizzaservice } from '../providers/pizzaservice/pizzaservice';
 import { Vibration } from '@ionic-native/vibration';
 import { Camera } from '@ionic-native/camera';
-import { NativeStorage } from '@ionic-native/native-storage';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -46,7 +45,6 @@ import { HttpClientModule } from '@angular/common/http';
     Pizzaservice,
     Vibration,
     Camera,
-    NativeStorage,
 
   ]
 })
