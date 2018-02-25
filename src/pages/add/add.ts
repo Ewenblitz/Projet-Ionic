@@ -1,3 +1,8 @@
+/**
+ * @author Ewen LOMER - Ingésup B3
+ * TypeScript script for the adding of a Pizza in the webService
+ */
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -37,6 +42,12 @@ export class AddPage {
   }
 
   addPizza = [];
+  
+  /**
+   * add - Add function
+   *
+   * @return {object}  This will return the page with the newly add Pizza
+   */
 
   add() {
     if (this.addPizza['price'] == null) {
@@ -54,6 +65,11 @@ export class AddPage {
     });
   }
 
+  /**
+   * addPicture - Function to add a picture on mobile device
+   *
+   * @return {void}
+   */
   addPicture() {
     this.camera.getPicture(this.options).then((imagedata) => {
       this.base64Image = imagedata;

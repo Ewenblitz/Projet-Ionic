@@ -1,3 +1,7 @@
+/**
+ * @author Ewen LOMER - Ingésup B3
+ */
+ 
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ModifcationPage } from './modifcation';

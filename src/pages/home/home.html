@@ -10,8 +10,8 @@
 <ion-content padding>
   <ion-card *ngFor="let item of mypizza">
     <ion-card-content>
-      {{ item.name }}
-      <img style= "width:50%; length:50%;"src='{{ item.picture }}'/> <hr />
+      <b>{{ item.name }}</b>
+      <img src='{{ item.picture }}'/> <hr />
       {{ item.desc }} <br />
       Prix : <strong>{{ item.price }}€</strong> <br />
 

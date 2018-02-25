@@ -1,3 +1,7 @@
+/**
+ * @author Ewen LOMER - Ingésup B3
+ */
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -37,12 +41,22 @@ export class ModifcationPage {
     mediaType: this.camera.MediaType.PICTURE
   }
 
+  /**
+   * updating - Updating the Pizza and pushing to the Home Page
+   *
+   * @return {void}
+   */
   updating() {
     this.pizzaservice.update(this.pizza).then((item) => {
       this.navCtrl.push(HomePage);
     });
   }
 
+  /**
+   * pictureUpdating - Updating the picture for the Pizza
+   *
+   * @return {type}  description
+   */
   pictureUpdating() {
     this.camera.getPicture(this.options).then((imagedata) => {
       this.base64Image = imagedata;

@@ -1,3 +1,7 @@
+/**
+ * @author Ewen LOMER - Ingésup B3
+ */
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -31,6 +35,12 @@ export class CartPage {
   console.log(this.navParams.data.var1);
   }
 
+  /**
+   * deleteCart - Function to delete the current cart
+   *
+   * @param  {number} i: number temporary variable
+   * @return {void}              
+   */
   deleteCart(i: number) {
     this.cartsection.splice(i, 1);
     this.nativeStorage.setItem('monPanier', this.cartsection).then(
